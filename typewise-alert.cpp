@@ -18,16 +18,16 @@ BreachType classifyTemperatureBreach(const BatteryCharacter& batteryChar, double
 }
 
 void checkAndAlert(AlertTarget alertTarget, const BatteryCharacter& batteryChar, double temperatureInC) {
-    BreachType breachType = classifyTemperatureBreach(batteryChar, temperatureInC);
+    BreachType breachType = classifyTemperatureBreach(batteryChar.coolingType, temperatureInC);
 
-    switch (alertTarget) {
-        case TO_CONTROLLER:
-            sendToController(breachType);
-            break;
-        case TO_EMAIL:
-            sendToEmail(breachType);
-            break;
-    }
+    // Map associating AlertTarget with the corresponding alert function
+    std::unordered_map<AlertTarget, AlertFunction> alertFunctionMap = {
+        { TO_CONTROLLER, sendToController },
+        { TO_EMAIL, sendToEmail }
+    };
+
+    // Call the appropriate function based on alertTarget
+    alertFunctionMap[alertTarget](breachType);
 }
 
 void sendToController(BreachType breachType) {
@@ -36,14 +36,14 @@ void sendToController(BreachType breachType) {
 }
 
 void sendToEmail(BreachType breachType) {
-    const char* recepient = "a.b@c.com";
+    const char* recipient = "a.b@c.com";
     switch (breachType) {
         case TOO_LOW:
-            printf("To: %s\n", recepient);
+            printf("To: %s\n", recipient);
             printf("Hi, the temperature is too low\n");
             break;
         case TOO_HIGH:
-            printf("To: %s\n", recepient);
+            printf("To: %s\n", recipient);
             printf("Hi, the temperature is too high\n");
             break;
         case NORMAL:
