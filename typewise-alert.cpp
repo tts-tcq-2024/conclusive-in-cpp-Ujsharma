@@ -21,15 +21,13 @@ BreachType classifyTemperatureBreach(const BatteryCharacter& batteryChar, double
 }
 
 void checkAndAlert(AlertTarget alertTarget, const BatteryCharacter& batteryChar, double temperatureInC) {
-    BreachType breachType = classifyTemperatureBreach(batteryChar.coolingType, temperatureInC);
+    BreachType breachType = classifyTemperatureBreach(batteryChar.coolingType, temperatureInC);  // Corrected
 
-    // Map associating AlertTarget with the corresponding alert function
-    std::unordered_map<AlertTarget, AlertFunction> alertFunctionMap = {
+    std::unordered_map<AlertTarget, void(*)(BreachType)> alertFunctionMap = {
         { TO_CONTROLLER, sendToController },
         { TO_EMAIL, sendToEmail }
     };
 
-    // Call the appropriate function based on alertTarget
     alertFunctionMap[alertTarget](breachType);
 }
 
@@ -41,16 +39,13 @@ void sendToController(BreachType breachType) {
 void sendToEmail(BreachType breachType) {
     const char* recipient = "a.b@c.com";
     
-    // Table-driven approach: map each BreachType to its corresponding message
     std::unordered_map<BreachType, const char*> breachMessages = {
         { TOO_LOW, "Hi, the temperature is too low" },
         { TOO_HIGH, "Hi, the temperature is too high" }
     };
 
-    // Check if the breach type has a corresponding message
     if (breachMessages.find(breachType) != breachMessages.end()) {
         printf("To: %s\n", recipient);
         printf("%s\n", breachMessages[breachType]);
     }
 }
-
