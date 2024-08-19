@@ -1,5 +1,5 @@
-
-// MedActiveCoolingStrategy.h
+#ifndef MEDACTIVECOOLINGSTRATEGY_H
+#define MEDACTIVECOOLINGSTRATEGY_H
 #pragma once
 
 #include "CoolingStrategy.h"
@@ -10,3 +10,4 @@ public:
         return inferBreach(temperatureInC, 0, 40);
     }
 };
+#endif //MEDACTIVECOOLINGSTRATEGY_H
