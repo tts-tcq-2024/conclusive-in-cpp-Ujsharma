@@ -1,3 +1,5 @@
+#ifndef TYPEWISE-ALERT_H
+#define TYPEWISE-ALERT_H
 #pragma once
 
 #include <string.h>
@@ -33,3 +35,5 @@ void checkAndAlert(AlertTarget alertTarget, const BatteryCharacter& batteryChar,
 
 void sendToController(BreachType breachType);
 void sendToEmail(BreachType breachType);
+
+#endif //TYPEWISE-ALERT_H
