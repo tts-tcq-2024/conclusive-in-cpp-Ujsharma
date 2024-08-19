@@ -1,6 +1,5 @@
 #ifndef TYPEWISEALERT_H
 #define TYPEWISEALERT_H
-#pragma once
 
 #include <string.h>
 
