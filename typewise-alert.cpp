@@ -18,6 +18,8 @@ BreachType classifyTemperatureBreach(const BatteryCharacter& batteryChar, double
     return batteryChar.coolingStrategy->classifyTemperature(temperatureInC);
 }
 
+}
+
 void checkAndAlert(AlertTarget alertTarget, const BatteryCharacter& batteryChar, double temperatureInC) {
     BreachType breachType = classifyTemperatureBreach(batteryChar.coolingType, temperatureInC);
 
