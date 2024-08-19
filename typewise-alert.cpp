@@ -15,8 +15,12 @@ BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
 }
 
 BreachType classifyTemperatureBreach(const BatteryCharacter& batteryChar, double temperatureInC) {
-    // Use the cooling strategy to classify the temperature
-    return batteryChar.coolingStrategy->classifyTemperature(temperatureInC);
+    if (batteryChar.coolingStrategy) {
+        return batteryChar.coolingStrategy->classifyTemperature(temperatureInC);
+    } else {
+        // Handle the case where coolingStrategy is null
+        return NORMAL;  // Or some other default behavior
+    }
 }
 
 }
