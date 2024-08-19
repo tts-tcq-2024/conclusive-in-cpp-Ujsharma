@@ -11,12 +11,6 @@ typedef enum {
 } CoolingType;
 
 typedef enum {
-    NORMAL,
-    TOO_LOW,
-    TOO_HIGH
-} BreachType;
-
-typedef enum {
     TO_CONTROLLER,
     TO_EMAIL
 } AlertTarget;
