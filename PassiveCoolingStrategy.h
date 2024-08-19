@@ -1,4 +1,5 @@
-// PassiveCoolingStrategy.h
+#ifndef PASSIVECOOLINGSTRATEGY_H
+#define PASSIVECOOLINGSTRATEGY_H
 #pragma once
 
 #include "CoolingStrategy.h"
@@ -9,4 +10,4 @@ public:
         return inferBreach(temperatureInC, 0, 35);
     }
 };
-
+#endif //PASSIVECOOLINGSTRATEGY_H
