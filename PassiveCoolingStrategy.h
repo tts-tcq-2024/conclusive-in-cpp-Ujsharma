@@ -1,6 +1,5 @@
 #ifndef PASSIVECOOLINGSTRATEGY_H
 #define PASSIVECOOLINGSTRATEGY_H
-#pragma once
 
 #include "CoolingStrategy.h"
 
