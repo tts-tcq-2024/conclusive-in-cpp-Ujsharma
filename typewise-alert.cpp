@@ -1,8 +1,13 @@
-// typewise-alert.cpp
 #include "typewise-alert.h"
 #include "CoolingStrategy.h"
 #include <stdio.h>
 #include <unordered_map>
+
+// Assuming the BatteryCharacter struct is defined somewhere like this:
+struct BatteryCharacter {
+    CoolingStrategy* coolingStrategy;  // Pointer to the strategy
+    char brand[48];
+};
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
     if (value < lowerLimit) {
@@ -14,19 +19,17 @@ BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
     return NORMAL;
 }
 
+// Correct definition of classifyTemperatureBreach
 BreachType classifyTemperatureBreach(const BatteryCharacter& batteryChar, double temperatureInC) {
     if (batteryChar.coolingStrategy) {
         return batteryChar.coolingStrategy->classifyTemperature(temperatureInC);
     } else {
-        // Handle the case where coolingStrategy is null
-        return NORMAL;  // Or some other default behavior
+        return NORMAL;  // Default behavior if coolingStrategy is null
     }
 }
 
-}
-
 void checkAndAlert(AlertTarget alertTarget, const BatteryCharacter& batteryChar, double temperatureInC) {
-    BreachType breachType = classifyTemperatureBreach(batteryChar.coolingType, temperatureInC);  // Corrected
+    BreachType breachType = classifyTemperatureBreach(batteryChar, temperatureInC);  // Pass the correct type
 
     std::unordered_map<AlertTarget, void(*)(BreachType)> alertFunctionMap = {
         { TO_CONTROLLER, sendToController },
