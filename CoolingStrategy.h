@@ -1,8 +1,6 @@
 #ifndef COOLINGSTRATEGY_H
 #define COOLINGSTRATEGY_H
 
-#pragma once
-
 #include "typewise-alert.h"
 
 class CoolingStrategy {
