@@ -1,13 +1,8 @@
 #include "typewise-alert.h"
 #include "CoolingStrategy.h"
+#include "BatteryCharacter.h"
 #include <stdio.h>
 #include <unordered_map>
-
-// Assuming the BatteryCharacter struct is defined somewhere like this:
-struct BatteryCharacter {
-    CoolingStrategy* coolingStrategy;  // Pointer to the strategy
-    char brand[48];
-};
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
     if (value < lowerLimit) {
