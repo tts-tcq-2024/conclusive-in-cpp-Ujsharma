@@ -46,3 +46,15 @@ You have seen a few workflows in this repository. They are quality-gates to prev
 
 During the next four weeks, what improvement do you plan in your code-quality practice? (in your regular work, not in this repository!)
 **_enter the practice here**
+
+## Infer and Report by type
+
+This assessment is graded by the amount of coverage achieved, in addition to readability and ease-of-change.
+
+The data-flow in the code has several variations:
+
+The code uses switch-case / if-else ladders to implement these variations.
+
+Such structures limit the open-ness of the code, limiting the possibility of parallel working by multiple developers. They also require repetitive tests.
+
+Try applying the strategy pattern to make the code more 'open', reducing the amount of tests and repetitions, while increasing the coverage.
