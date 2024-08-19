@@ -12,7 +12,6 @@ public:
             return TOO_HIGH;
         }
         return NORMAL;
-    }
         return inferBreach(temperatureInC, 0, 35);
     }
 };
