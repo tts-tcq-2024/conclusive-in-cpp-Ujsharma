@@ -40,16 +40,17 @@ void sendToController(BreachType breachType) {
 
 void sendToEmail(BreachType breachType) {
     const char* recipient = "a.b@c.com";
-    switch (breachType) {
-        case TOO_LOW:
-            printf("To: %s\n", recipient);
-            printf("Hi, the temperature is too low\n");
-            break;
-        case TOO_HIGH:
-            printf("To: %s\n", recipient);
-            printf("Hi, the temperature is too high\n");
-            break;
-        case NORMAL:
-            break;
+    
+    // Table-driven approach: map each BreachType to its corresponding message
+    std::unordered_map<BreachType, const char*> breachMessages = {
+        { TOO_LOW, "Hi, the temperature is too low" },
+        { TOO_HIGH, "Hi, the temperature is too high" }
+    };
+
+    // Check if the breach type has a corresponding message
+    if (breachMessages.find(breachType) != breachMessages.end()) {
+        printf("To: %s\n", recipient);
+        printf("%s\n", breachMessages[breachType]);
     }
 }
+
