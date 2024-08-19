@@ -24,7 +24,7 @@ BreachType inferBreach(double value, double lowerLimit, double upperLimit);
 BreachType classifyTemperatureBreach(CoolingType coolingType, double temperatureInC);
 
 typedef struct {
-    CoolingType* coolingType;
+    CoolingType coolingType;
     char brand[48];
 } BatteryCharacter;
 
