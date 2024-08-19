@@ -2,6 +2,7 @@
 #include "typewise-alert.h"
 #include "CoolingStrategy.h"
 #include <stdio.h>
+#include <unordered_map>
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
     if (value < lowerLimit) {
