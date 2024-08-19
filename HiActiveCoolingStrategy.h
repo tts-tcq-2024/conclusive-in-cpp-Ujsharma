@@ -1,4 +1,6 @@
-// HiActiveCoolingStrategy.h
+#ifndef HIACTIVECOOLINGSTRATEGY_H
+#define HIACTIVECOOLINGSTRATEGY_H
+
 #pragma once
 
 #include "CoolingStrategy.h"
@@ -9,3 +11,5 @@ public:
         return inferBreach(temperatureInC, 0, 45);
     }
 };
+
+#endif // HIACTIVECOOLINGSTRATEGY_H
