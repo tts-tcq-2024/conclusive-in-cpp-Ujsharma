@@ -1,6 +1,5 @@
 #ifndef MEDACTIVECOOLINGSTRATEGY_H
 #define MEDACTIVECOOLINGSTRATEGY_H
-#pragma once
 
 #include "CoolingStrategy.h"
 
