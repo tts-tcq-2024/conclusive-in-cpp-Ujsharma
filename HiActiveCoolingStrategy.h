@@ -1,8 +1,6 @@
 #ifndef HIACTIVECOOLINGSTRATEGY_H
 #define HIACTIVECOOLINGSTRATEGY_H
 
-#pragma once
-
 #include "CoolingStrategy.h"
 
 class HiActiveCoolingStrategy : public CoolingStrategy {
