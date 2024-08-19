@@ -2,6 +2,7 @@
 #define TYPEWISEALERT_H
 
 #include <unordered_map>
+#include "BatteryCharacter.h"
 
 typedef enum {
     PASSIVE_COOLING,
@@ -22,11 +23,6 @@ typedef enum {
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit);
 BreachType classifyTemperatureBreach(const BatteryCharacter& batteryChar, double temperatureInC);
-
-typedef struct {
-    CoolingType* coolingType;
-    char brand[48];
-} BatteryCharacter;
 
 void checkAndAlert(AlertTarget alertTarget, const BatteryCharacter& batteryChar, double temperatureInC);
 
