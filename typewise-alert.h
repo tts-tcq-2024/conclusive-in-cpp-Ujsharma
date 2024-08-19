@@ -1,7 +1,7 @@
 #ifndef TYPEWISEALERT_H
 #define TYPEWISEALERT_H
 
-#include <string.h>
+#include <unordered_map>
 
 typedef enum {
     PASSIVE_COOLING,
@@ -21,18 +21,18 @@ typedef enum {
 } AlertTarget;
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit);
-
-class CoolingStrategy;
+BreachType classifyTemperatureBreach(CoolingType coolingType, double temperatureInC);
 
 typedef struct {
-    CoolingStrategy* coolingStrategy;
+    CoolingType coolingType;
     char brand[48];
 } BatteryCharacter;
 
-BreachType classifyTemperatureBreach(const BatteryCharacter& batteryChar, double temperatureInC);
 void checkAndAlert(AlertTarget alertTarget, const BatteryCharacter& batteryChar, double temperatureInC);
 
 void sendToController(BreachType breachType);
 void sendToEmail(BreachType breachType);
+
+typedef void (*AlertFunction)(BreachType);  // Function pointer type for alert functions
 
 #endif //TYPEWISE-ALERT_H
