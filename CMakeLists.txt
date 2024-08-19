@@ -19,7 +19,6 @@ add_compile_options("--coverage")
 add_executable(
   cleancode
   typewise-alert.cpp
-  CoolingStrategy.cpp
   typewise-alert.tests.cpp
 )
 target_link_libraries(
